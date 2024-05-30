@@ -10,10 +10,19 @@
             href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
             rel="stylesheet"
         />
+        <script
+            src="https://kit.fontawesome.com/81cdac2f8d.js"
+            crossorigin="anonymous"
+        ></script>
         <meta name="description" content="" />
         <link rel="stylesheet" href="./assets/style.css" />
     </head>
     <body>
+        <div class="edit-mode edit-bar">
+            <button class="edit-btn edit-btn-dark">
+                <i class="fa-solid fa-pen-to-square"></i>Mode édition
+            </button>
+        </div>
         <header>
             <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
             <nav>
@@ -30,6 +39,7 @@
                 </ul>
             </nav>
         </header>
+
         <main>
             <section id="introduction">
                 <figure>
@@ -58,6 +68,9 @@
             </section>
             <section id="portfolio">
                 <h2>Mes Projets</h2>
+                <button class="edit-mode edit-btn edit-btn-light">
+                    <i class="fa-solid fa-pen-to-square"></i>Mode édition
+                </button>
                 <div class="filter"></div>
                 <div class="gallery"></div>
             </section>

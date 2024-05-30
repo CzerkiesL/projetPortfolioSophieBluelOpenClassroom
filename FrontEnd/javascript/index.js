@@ -1,5 +1,5 @@
-import { createGallery } from "./gallery.js";
-import { createFilterMenu, filterByCategories } from "./filter.js";
+import { createGallery } from "./function/gallery.js";
+import { createFilterMenu, filterByCategories } from "./function/filter.js";
 
 // recuperation des differents projets
 const responseProject = await fetch("http://localhost:5678/api/works");
@@ -20,3 +20,11 @@ btnFilter.forEach((btn) => {
         filterByCategories(btn, projects); // met a jour la galerie selon le filtre
     });
 });
+
+const editModeElement = document.querySelectorAll(".edit-mode");
+
+if (sessionStorage.getItem("admin")) {
+    editModeElement.forEach((elem) => {
+        elem.classList.remove("edit-mode");
+    });
+}

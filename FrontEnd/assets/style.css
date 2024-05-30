@@ -200,6 +200,9 @@ li:hover {
 #introduction p {
     margin-bottom: 0.5em;
 }
+#portfolio {
+    position: relative;
+}
 #portfolio h2 {
     text-align: center;
     margin-bottom: 1em;
@@ -270,7 +273,7 @@ footer nav ul {
     align-items: center;
 }
 
-button {
+.btn-filter {
     color: #1d6154;
     background: white;
     margin: 10px;
@@ -279,7 +282,7 @@ button {
     padding: 15px;
 }
 
-button.active {
+.btn-filter.active {
     color: white;
     background: #1d6154;
 }
@@ -318,4 +321,48 @@ a:hover {
 
 .link-actif {
     font-weight: bold;
+}
+
+.err {
+    margin: 15px 5px;
+}
+
+.err li {
+    color: red;
+    margin-bottom: 5px;
+}
+
+.edit-mode {
+    display: none;
+}
+
+.edit-bar {
+    padding: 15px;
+    text-align: center;
+    background: #000;
+}
+
+.edit-bar i {
+    margin-right: 10px;
+}
+
+.edit-btn {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 12px;
+}
+
+.edit-btn:hover {
+    color: #b1663c;
+}
+
+.edit-btn-light {
+    position: absolute;
+    top: 8px;
+    left: 60%;
+}
+
+.edit-btn-dark {
+    color: white;
 }

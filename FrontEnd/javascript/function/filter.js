@@ -20,6 +20,7 @@ export function createFilterMenu(projectList) {
         }
 
         filterBtn.classList.add("btn");
+        filterBtn.classList.add("btn-filter");
         filterBtn.value = categorie;
         filterBtn.innerText = categorie;
 
