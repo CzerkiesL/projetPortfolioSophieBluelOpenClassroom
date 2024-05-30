@@ -8,7 +8,6 @@ const projects = await responseProject.json();
 createFilterMenu(projects); // creer le menu des filtre
 createGallery(projects); // creer la gallerie des projets
 
-
 // recuperation et verification de quelle bouton a ete presser
 // changement des classe pour l'affichage
 const btnFilter = document.querySelectorAll("div.filter button");
