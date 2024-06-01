@@ -1,0 +1,82 @@
+/************************************* section introduction  */
+#introduction {
+    display: flex;
+    align-items: center;
+}
+#introduction figure {
+    flex: 1;
+}
+#introduction img {
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+#introduction article {
+    flex: 1;
+}
+#introduction h2 {
+    margin-bottom: 1em;
+}
+
+#introduction p {
+    margin-bottom: 0.5em;
+}
+
+/************************************* section portfolio  */
+#portfolio {
+    position: relative;
+}
+#portfolio h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+.gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.gallery img {
+    width: 100%;
+}
+
+.filter {
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-filter {
+    color: #1d6154;
+    background: white;
+    margin: 10px;
+    border: 1px solid #1d6154;
+    min-width: 100px;
+    padding: 15px;
+}
+
+.btn-filter.active {
+    color: white;
+    background: #1d6154;
+}
+
+/************************************* section contact  */
+#contact {
+    width: 50%;
+    margin: auto;
+}
+#contact > * {
+    text-align: center;
+}
+#contact h2 {
+    margin-bottom: 20px;
+}
+
+#contact textarea {
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}

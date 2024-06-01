@@ -1,0 +1,222 @@
+/************************************* bouton/bar d'edition  */
+.edit-mode {
+    display: none;
+}
+
+.edit-bar {
+    padding: 15px;
+    text-align: center;
+    background: #000;
+}
+
+.edit-btn i {
+    margin-right: 7px;
+}
+
+.edit-btn {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 12px;
+}
+
+.edit-btn:hover {
+    color: #b1663c;
+}
+
+.edit-btn-light {
+    position: absolute;
+    top: 8px;
+    left: 60%;
+}
+
+.edit-btn-dark {
+    color: white;
+}
+
+/************************************* modal  */
+.not-display {
+    display: none;
+}
+
+#modal-container {
+    margin: 0;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#modal-container section {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-bg {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.45);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-container {
+    z-index: 10;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 30px 30px 50px 30px;
+    background-color: white;
+    width: 650px;
+    height: 700px;
+    border-radius: 10px;
+}
+
+.close {
+    position: relative;
+    width: 100%;
+    height: 5%;
+}
+
+.close i {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.close i.fa-xmark {
+    position: absolute;
+    right: 0;
+}
+
+.modal-title {
+    font-size: 30px;
+}
+
+.modal-content {
+    height: 65%;
+    margin: 50px 0;
+}
+
+hr {
+    width: 75%;
+    margin-bottom: 30px;
+}
+
+.modal-btn {
+    width: 350px;
+    padding: 10px;
+    border: none;
+    background: #1d6154;
+    color: white;
+}
+
+.modal-btn:hover {
+    background: #1b5b4f;
+}
+
+.no-valide {
+    background: #a7a7a7;
+}
+
+.no-valide:hover {
+    background: #a7a7a7;
+}
+
+/* modal gallery */
+#modal-gallery-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+#modal-gallery-content .img-container {
+    position: relative;
+}
+
+#modal-gallery-content .img-container img {
+    height: 102px;
+    width: 77px;
+}
+
+#modal-gallery-content .img-container button {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 17px;
+    height: 17px;
+    background: #333;
+    border: none;
+}
+
+button i.fa-trash-can {
+    color: #ddd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+}
+
+/* modal form */
+
+#modal-form-content {
+    width: 100%;
+}
+
+#modal-form-content form {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-form {
+    background: #e8f1f6;
+    height: 250px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-form i {
+    font-size: 76px;
+    color: #b9c5cc;
+}
+
+.img-form label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #306685;
+    padding: 15px 35px;
+    border-radius: 20px;
+    background: #b9c5cc;
+}
+
+.img-form p {
+    font-size: 10px;
+    color: #444444;
+}
+
+.form-group {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* display */
+#modal-container .hide {
+    display: none;
+}

@@ -15,7 +15,7 @@
             crossorigin="anonymous"
         ></script>
         <meta name="description" content="" />
-        <link rel="stylesheet" href="./assets/style.css" />
+        <link rel="stylesheet" href="./assets/styles/style.css" />
     </head>
     <body>
         <div class="edit-mode edit-bar">
@@ -101,6 +101,63 @@
                 </ul>
             </nav>
         </footer>
+
+        <section class="" id="modal-container">
+            <div class="modal-bg"></div>
+            <div class="modal-container">
+                <!--  -->
+                <section class="" id="modal-gallery">
+                    <div class="close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <h3 class="modal-title">Galerie photo</h3>
+                    <div id="modal-gallery-content" class="modal-content"></div>
+                    <hr />
+                    <button class="btn modal-btn">Ajouter une photo</button>
+                </section>
+
+                <section class="hide" id="modal-form">
+                    <div class="close">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <h3 class="modal-title">Ajout photo</h3>
+                    <div id="modal-form-content" class="modal-content">
+                        <form>
+                            <div class="img-form">
+                                <i class="fa-regular fa-image"></i>
+                                <label for="image"> + Aouter photo </label>
+                                <input
+                                    class="hide"
+                                    type="file"
+                                    name="image"
+                                    id="image"
+                                />
+                                <p>jpg, png : 4mo max</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Titre</label>
+                                <input type="text" name="title" id="title" />
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Catégorie</label>
+                                <input
+                                    type="text"
+                                    name="category"
+                                    id="category"
+                                />
+                            </div>
+                        </form>
+                    </div>
+                    <hr />
+                    <button class="btn modal-btn no-valide">Valider</button>
+                </section>
+                <!--  -->
+            </div>
+        </section>
+
+        <!-- script -->
         <script type="module" src="./javascript/index.js"></script>
+        <script type="module" src="./javascript/editMode.js"></script>
     </body>
 </html>

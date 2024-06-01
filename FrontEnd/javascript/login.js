@@ -1,4 +1,4 @@
-import { checkInputValue, displayError } from "./function/form.js";
+import { checkInputValue, displayError } from "./function/loginForm.js";
 
 const loginForm = document.querySelector("#login form");
 
@@ -21,7 +21,7 @@ loginForm.addEventListener("submit", async (e) => {
         const login = await loginResponse.json();
 
         if (login.userId) {
-            sessionStorage.setItem("admin", true);
+            localStorage.setItem("auth", login.token);
             window.location.replace(
                 "http://127.0.0.1:5500/FrontEnd/index.html"
             );

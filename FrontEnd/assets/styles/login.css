@@ -1,0 +1,27 @@
+#login {
+    width: 40%;
+    margin: 300px auto;
+}
+
+#login h2 {
+    text-align: center;
+}
+
+#login a {
+    display: block;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.link-actif {
+    font-weight: bold;
+}
+
+.err {
+    margin: 15px 5px;
+}
+
+.err li {
+    color: red;
+    margin-bottom: 5px;
+}

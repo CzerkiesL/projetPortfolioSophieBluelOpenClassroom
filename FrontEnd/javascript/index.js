@@ -3,7 +3,7 @@ import { createFilterMenu, filterByCategories } from "./function/filter.js";
 
 // recuperation des differents projets
 const responseProject = await fetch("http://localhost:5678/api/works");
-const projects = await responseProject.json();
+ export const projects = await responseProject.json();
 
 createFilterMenu(projects); // creer le menu des filtre
 createGallery(projects); // creer la gallerie des projets
@@ -23,7 +23,7 @@ btnFilter.forEach((btn) => {
 
 const editModeElement = document.querySelectorAll(".edit-mode");
 
-if (sessionStorage.getItem("admin")) {
+if (localStorage.getItem("auth")) {
     editModeElement.forEach((elem) => {
         elem.classList.remove("edit-mode");
     });

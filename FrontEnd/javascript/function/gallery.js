@@ -15,8 +15,7 @@ function createGalleryElement(project) {
 
 /*********************************************************
  Fonction qui ajoute un element dans la gallery des projet
- param 1: le container ou ajouter les projet
- param 2: la liste des projet a afficher   
+ param : la liste des projet a afficher   
  *********************************************************/
 export function createGallery(projectList) {
     const galleryContainer = document.querySelector("div.gallery");
