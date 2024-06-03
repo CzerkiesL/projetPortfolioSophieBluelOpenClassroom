@@ -4,8 +4,11 @@ import { createGallery } from "./gallery.js";
 Fonction qui creez un menu de filtre par categories
     param 1: la liste de projet pour recuperer les categorie
 *********************************************************/
-export function createFilterMenu(projectList) {
+export async function createFilterMenu(projectList) {
     const filterMenu = document.querySelector("div.filter");
+
+    filterMenu.innerHTML = "";
+
     let categories = new Set(["Tous"]);
 
     projectList.forEach((project) => {
@@ -18,13 +21,22 @@ export function createFilterMenu(projectList) {
         if (categorie === "Tous") {
             filterBtn.classList.add("active");
         }
-
         filterBtn.classList.add("btn");
         filterBtn.classList.add("btn-filter");
         filterBtn.value = categorie;
         filterBtn.innerText = categorie;
-
         filterMenu.append(filterBtn);
+    });
+
+    const btnFilter = document.querySelectorAll("div.filter button");
+    btnFilter.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            for (let i = 0; i < btnFilter.length; i++) {
+                btnFilter[i].classList.remove("active");
+            }
+            btn.classList.toggle("active");
+            filterByCategories(btn, projectList); // met a jour la galerie selon le filtre
+        });
     });
 }
 

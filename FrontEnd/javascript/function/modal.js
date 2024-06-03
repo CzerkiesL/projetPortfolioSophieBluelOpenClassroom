@@ -1,15 +1,22 @@
+import { createGallery } from "./gallery.js";
+import { createFilterMenu } from "./filter.js";
+import { fetchWorks } from "../index.js"; // import la liste de projet
+
 /******************************************  
  genere la liste de projet pour l'incorporer a la modale
     param: liste de projet a afficher
  ******************************************/
-export function generateGalleryContent(projectList) {
+export async function generateGalleryContent(projectList) {
     const modalGalleryContent = document.getElementById(
         "modal-gallery-content"
     );
+
+    modalGalleryContent.innerHTML = "";
+
     projectList.forEach((project) => {
-        const modalGallery = document.createElement("div");
-        modalGallery.classList.add("img-container");
-        modalGallery.innerHTML = `
+        const modalGalleryElem = document.createElement("div");
+        modalGalleryElem.classList.add("img-container");
+        modalGalleryElem.innerHTML = `
         <img
         src="${project.imageUrl}"
         alt="${project.title}"
@@ -18,39 +25,44 @@ export function generateGalleryContent(projectList) {
         <i class="fa-solid fa-trash-can"></i>
         </button>
         `;
+        modalGalleryContent.appendChild(modalGalleryElem);
 
-        modalGalleryContent.appendChild(modalGallery);
+        const deleteBtn = document.querySelectorAll("button.delete");
+
+        deleteBtn.forEach((currentDeleteBtn) => {
+            currentDeleteBtn.addEventListener("click", async (event) => {
+                const workId = currentDeleteBtn.dataset.id; // recupere id du bouton generer selon le projet
+                deleteWork(workId, event);
+            });
+        });
     });
 }
 
 /******************************************  
- ouverture de la modale
+ fonction qui permet de supprimer les projet dans la gallery
+    param1: id du projet a supprimer
+    parma2: evenement du click sur le bouton
  ******************************************/
-export function openModal() {
-    const modal = document.querySelector("section#modal-container");
-    modal.classList.remove("not-display");
-}
+async function deleteWork(workId, event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const userId = localStorage.getItem("auth"); // token identification
+    const deleteResponse = await fetch(
+        `http://localhost:5678/api/works/${workId}`,
+        {
+            method: "DELETE",
+            headers: {
+                accept: "*/*",
+                Authorization: `Bearer ${userId}`,
+            },
+        }
+    );
 
-/******************************************  
- fermeture et reset de la modale
- ******************************************/
-export function closeModal() {
-    const modal = document.querySelector("section#modal-container");
-    const modalGallery = document.getElementById("modal-gallery");
-    const modalForm = document.getElementById("modal-form");
+    if (deleteResponse.ok) {
+        const newProjectList = await fetchWorks();
 
-    modal.classList.add("not-display");
-    modalGallery.classList.remove("hide");
-    modalForm.classList.add("hide");
-}
-
-/******************************************  
- permet de passer de la gellery au formulaire et inverse
- ******************************************/
-export function toggleModalContent() {
-    const modalGallery = document.getElementById("modal-gallery");
-    const modalForm = document.getElementById("modal-form");
-
-    modalGallery.classList.toggle("hide");
-    modalForm.classList.toggle("hide");
+        createFilterMenu(newProjectList);
+        createGallery(newProjectList);
+        generateGalleryContent(newProjectList);
+    }
 }

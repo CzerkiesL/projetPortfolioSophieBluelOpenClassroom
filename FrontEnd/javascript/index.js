@@ -1,30 +1,42 @@
 import { createGallery } from "./function/gallery.js";
-import { createFilterMenu, filterByCategories } from "./function/filter.js";
+import { createFilterMenu } from "./function/filter.js";
 
 // recuperation des differents projets
-const responseProject = await fetch("http://localhost:5678/api/works");
- export const projects = await responseProject.json();
+export async function fetchWorks() {
+    const responseProject = await fetch("http://localhost:5678/api/works");
+    const projects = await responseProject.json();
+    return projects;
+}
+
+export const projects = await fetchWorks();
 
 createFilterMenu(projects); // creer le menu des filtre
 createGallery(projects); // creer la gallerie des projets
 
-// recuperation et verification de quelle bouton a ete presser
-// changement des classe pour l'affichage
-const btnFilter = document.querySelectorAll("div.filter button");
-btnFilter.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        for (let i = 0; i < btnFilter.length; i++) {
-            btnFilter[i].classList.remove("active");
-        }
-        btn.classList.toggle("active");
-        filterByCategories(btn, projects); // met a jour la galerie selon le filtre
-    });
-});
-
+// gestion de l'affichage selon l'authentification
 const editModeElement = document.querySelectorAll(".edit-mode");
+const logBtn = document.querySelector("a.log");
 
 if (localStorage.getItem("auth")) {
+    logBtn.innerText = "logout";
+    logBtn.setAttribute("href", "#");
     editModeElement.forEach((elem) => {
         elem.classList.remove("edit-mode");
     });
+} else {
+    editModeElement.forEach((elem) => {
+        elem.classList.add("edit-mode");
+    });
 }
+
+logBtn.addEventListener("click", () => {
+    if (logBtn.innerText === "logout") {
+        localStorage.removeItem("auth");
+        logBtn.innerText = "login";
+        editModeElement.forEach((elem) => {
+            elem.classList.add("edit-mode");
+        });
+    } else {
+        logBtn.setAttribute("href", "./Login.html");
+    }
+});
