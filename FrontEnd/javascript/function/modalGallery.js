@@ -46,7 +46,7 @@ export async function generateGalleryContent(projectList) {
 async function deleteWork(workId, event) {
     event.preventDefault();
     event.stopPropagation();
-    const userId = localStorage.getItem("auth"); // token identification
+    const userId = sessionStorage.getItem("auth"); // token identification
     const deleteResponse = await fetch(
         `http://localhost:5678/api/works/${workId}`,
         {

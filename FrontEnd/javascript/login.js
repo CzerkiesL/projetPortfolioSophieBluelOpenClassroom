@@ -21,9 +21,9 @@ loginForm.addEventListener("submit", async (e) => {
         const login = await loginResponse.json();
 
         if (login.userId) {
-            localStorage.setItem("auth", login.token);
+            sessionStorage.setItem("auth", login.token);
             window.location.replace(
-                "http://127.0.0.1:5500/FrontEnd/index.html"
+                "http://127.0.0.1:5500/index.html"
             );
         } else {
             displayError(["Erreur dans l’identifiant ou le mot de passe"]);

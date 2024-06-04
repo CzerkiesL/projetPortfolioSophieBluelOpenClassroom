@@ -17,7 +17,7 @@ createGallery(projects); // creer la gallerie des projets
 const editModeElement = document.querySelectorAll(".edit-mode");
 const logBtn = document.querySelector("a.log");
 
-if (localStorage.getItem("auth")) {
+if (sessionStorage.getItem("auth")) {
     logBtn.innerText = "logout";
     logBtn.setAttribute("href", "#");
     editModeElement.forEach((elem) => {
@@ -31,7 +31,7 @@ if (localStorage.getItem("auth")) {
 
 logBtn.addEventListener("click", () => {
     if (logBtn.innerText === "logout") {
-        localStorage.removeItem("auth");
+        sessionStorage.removeItem("auth");
         logBtn.innerText = "login";
         editModeElement.forEach((elem) => {
             elem.classList.add("edit-mode");

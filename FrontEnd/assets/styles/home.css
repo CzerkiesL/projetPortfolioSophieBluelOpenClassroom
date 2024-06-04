@@ -34,12 +34,15 @@
 .gallery {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
 }
 
 .gallery img {
+    height: 550px;
+    object-fit: cover;
+    object-position: center;
     width: 100%;
 }
 

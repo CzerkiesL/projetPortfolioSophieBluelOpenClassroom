@@ -135,8 +135,7 @@ hr {
     grid-template-rows: repeat(3, 1fr) auto;
     gap: 10px;
     overflow: auto;
-    scrollbar-width: thin;
-    scrollbar-color: lightgrey white;
+    scrollbar-width: none;
 }
 
 #modal-gallery-content .img-container {
@@ -144,7 +143,8 @@ hr {
 }
 
 #modal-gallery-content .img-container img {
-    height: 102px;
+    object-fit: cover;
+    height: 100px;
     width: 77px;
 }
 
