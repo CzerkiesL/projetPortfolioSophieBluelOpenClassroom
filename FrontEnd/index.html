@@ -106,51 +106,61 @@
             <div class="modal-bg"></div>
             <div class="modal-container">
                 <!--  -->
-                <section class="" id="modal-gallery">
+                <section class="hide" id="modal-gallery">
                     <div class="close">
                         <i class="fa-solid fa-xmark"></i>
                     </div>
                     <h3 class="modal-title">Galerie photo</h3>
                     <div id="modal-gallery-content" class="modal-content"></div>
                     <hr />
-                    <button class="btn modal-btn">Ajouter une photo</button>
+                    <button id="add-img" class="btn modal-btn">
+                        Ajouter une photo
+                    </button>
                 </section>
 
-                <section class="hide" id="modal-form">
+                <section class="" id="modal-form">
                     <div class="close">
                         <i class="fa-solid fa-arrow-left"></i>
                         <i class="fa-solid fa-xmark"></i>
                     </div>
                     <h3 class="modal-title">Ajout photo</h3>
                     <div id="modal-form-content" class="modal-content">
-                        <form>
+                        <form id="modal-form">
                             <div class="img-form">
-                                <i class="fa-regular fa-image"></i>
-                                <label for="image"> + Aouter photo </label>
-                                <input
-                                    class="hide"
-                                    type="file"
-                                    name="image"
-                                    id="image"
-                                />
-                                <p>jpg, png : 4mo max</p>
+                                <img src="" alt="" class="img-preview hide" />
+                                <div class="form-img-group">
+                                    <i class="fa-regular fa-image"></i>
+                                    <label for="image"> + Aouter photo </label>
+                                    <input
+                                        class="hide"
+                                        type="file"
+                                        name="image"
+                                        id="image"
+                                    />
+                                    <p>jpg, png : 4mo max</p>
+                                </div>
+                                <div class="err-img"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group title">
                                 <label for="title">Titre</label>
                                 <input type="text" name="title" id="title" />
+                                <div class="err-titre"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group category">
                                 <label for="category">Catégorie</label>
-                                <input
-                                    type="text"
-                                    name="category"
-                                    id="category"
-                                />
+                                <select name="category" id="category">
+                                    <option value="0">
+                                        selectionnez une catégorie ...
+                                    </option>
+                                </select>
+                                <div class="err-category"></div>
                             </div>
+                            <hr />
+                            <button disabled id="sub-btn" type="submit" class="btn modal-btn">
+                                Valider
+                            </button>
                         </form>
                     </div>
-                    <hr />
-                    <button class="btn modal-btn no-valide">Valider</button>
                 </section>
                 <!--  -->
             </div>
