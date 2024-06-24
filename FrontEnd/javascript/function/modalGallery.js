@@ -30,9 +30,9 @@ export async function generateGalleryContent(projectList) {
         const deleteBtn = document.querySelectorAll("button.delete");
 
         deleteBtn.forEach((currentDeleteBtn) => {
-            currentDeleteBtn.addEventListener("click", async (event) => {
+            currentDeleteBtn.addEventListener("click", async () => {
                 const workId = currentDeleteBtn.dataset.id; // recupere id du bouton generer selon le projet
-                deleteWork(workId, event);
+                deleteWork(workId);
             });
         });
     });
@@ -43,9 +43,7 @@ export async function generateGalleryContent(projectList) {
     param1: id du projet a supprimer
     parma2: evenement du click sur le bouton
  ******************************************/
-async function deleteWork(workId, event) {
-    event.preventDefault();
-    event.stopPropagation();
+async function deleteWork(workId) {
     const userId = sessionStorage.getItem("auth"); // token identification
     const deleteResponse = await fetch(
         `http://localhost:5678/api/works/${workId}`,
@@ -56,13 +54,20 @@ async function deleteWork(workId, event) {
                 Authorization: `Bearer ${userId}`,
             },
         }
-    );
-
-    if (deleteResponse.ok) {
-        const newProjectList = await fetchWorks();
-
-        createFilterMenu(newProjectList);
-        createGallery(newProjectList);
-        generateGalleryContent(newProjectList);
-    }
+    )
+        .then((response) => {
+            if (response.ok) {
+                return fetchWorks();
+            } else {
+                return Promise.reject("Erreur lors de la suppression");
+            }
+        })
+        .then((newProjectList) => {
+            createFilterMenu(newProjectList);
+            createGallery(newProjectList);
+            generateGalleryContent(newProjectList);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 }

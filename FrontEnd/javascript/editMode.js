@@ -73,16 +73,25 @@ addForm.addEventListener("submit", async (e) => {
                     Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
                 },
             }
-        );
-
-        if (addNewProjectResponse.ok) {
-            const newProjectList = await fetchWorks();
-
-            createFilterMenu(newProjectList);
-            createGallery(newProjectList);
-            modalGallery.generateGalleryContent(newProjectList);
-
-            modalNav.closeModal();
-        }
+        )
+            .then((response) => {
+                console.log(response);
+                if (response.ok) {
+                    return fetchWorks();
+                } else {
+                    return Promise.reject(
+                        "impossible d'ajouter le nouveau projet"
+                    );
+                }
+            })
+            .then((newProjectList) => {
+                createFilterMenu(newProjectList);
+                createGallery(newProjectList);
+                modalGallery.generateGalleryContent(newProjectList);
+                modalNav.closeModal();
+            })
+            .catch((err) => {
+                modalForm.createErrorMessage(err, inputImg);
+            });
     }
 });

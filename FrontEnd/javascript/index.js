@@ -3,9 +3,12 @@ import { createFilterMenu } from "./function/filter.js";
 
 // recuperation des differents projets
 export async function fetchWorks() {
-    const responseProject = await fetch("http://localhost:5678/api/works");
-    const projects = await responseProject.json();
-    return projects;
+    const responseProject = await fetch("http://localhost:5678/api/works").then(
+        (projectList) => {
+            return projectList.json();
+        }
+    );
+    return responseProject;
 }
 
 export const projects = await fetchWorks();

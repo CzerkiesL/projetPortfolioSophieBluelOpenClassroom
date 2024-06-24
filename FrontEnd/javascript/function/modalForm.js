@@ -9,7 +9,7 @@ export function checkImage() {
         const img = inputImg.files[0];
 
         if (img.type === "image/jpeg" || img.type === "image/png") {
-            if (img && img.size < 4000000) {
+            if (img.size < 4000000) {
                 imgError.innerHTML = "";
 
                 let reader = new FileReader();
